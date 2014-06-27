@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+  </head>
+
+  <body ng-app="app" ng-controller="ctrl">
+    <h1>Hello {{text}}</h1>
+
+
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="data in model">
+        {{data.title}}
+      </li>
+    </ul>
+
+    <script type="text/javascript">
+      angular.module('app', [])
+
+      .controller('ctrl', function($scope, $http) {
+        $scope.text = 'world';
+        $http.get('/d1').success(function(data) {
+          $scope.model = data;
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <script type="text/javascript" src="../bower_components/angular/angular.js"></script>
+  </head>
+
+  <body ng-app="app" ng-controller="ctrl">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+          <input type="text" name="q" id="inputQ" ng-model="q" class="form-control">
+        </div>      
+      </div>
+      
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="list-group">
+            <li class="list-group-item" ng-repeat="data in model|orderBy:'id'|filter:q">
+              {{data.title|uppercase}}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <pre>{{q}}</pre>
+          <pre>{{model|json}}</pre>
+        </div>
+      </div> -->
+      
+    </div>
+
+    <script type="text/javascript">
+      angular.module('app', [])
+
+      .controller('ctrl', function($scope, $http) {
+        $http.get('/api/2-2').success(function(data) {
+          $scope.model = data;
+        });
+
+      });
+    </script>
+  </body>
+</html>
