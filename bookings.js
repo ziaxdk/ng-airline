@@ -11,13 +11,13 @@ module.exports = [
             flightNo: 'DK107',
             departDate: '27-06-2014',
             departAirport: 'ARN',
-            ArrivalAirport: 'LCA'
+            arrivalAirport: 'LCA'
           },
           {
             flightNo: 'DK108',
             departDate: '04-07-2014',
-            departAirport: 'lCA',
-            ArrivalAirport: 'ARN'
+            departAirport: 'LCA',
+            arrivalAirport: 'ARN'
           }
         ]
       },
@@ -29,13 +29,13 @@ module.exports = [
             flightNo: 'DK107',
             departDate: '27-06-2014',
             departAirport: 'ARN',
-            ArrivalAirport: 'LCA'
+            arrivalAirport: 'LCA'
           },
           {
             flightNo: 'DK108',
             departDate: '04-07-2014',
-            departAirport: 'lCA',
-            ArrivalAirport: 'ARN'
+            departAirport: 'LCA',
+            arrivalAirport: 'ARN'
           }
         ]
       },
@@ -47,13 +47,13 @@ module.exports = [
             flightNo: 'DK107',
             departDate: '27-06-2014',
             departAirport: 'ARN',
-            ArrivalAirport: 'LCA'
+            arrivalAirport: 'LCA'
           },
           {
             flightNo: 'DK108',
             departDate: '04-07-2014',
-            departAirport: 'lCA',
-            ArrivalAirport: 'ARN'
+            departAirport: 'LCA',
+            arrivalAirport: 'ARN'
           }
         ]
       }
@@ -71,14 +71,14 @@ module.exports = [
             flightNo: 'DK793',
             departDate: '26-06-2014',
             departAirport: 'TRD',
-            ArrivalAirport: 'CHQ',
+            arrivalAirport: 'CHQ',
             seat: '4F',
           },
           {
             flightNo: 'DK794',
             departDate: '03-07-2014',
             departAirport: 'CHQ',
-            ArrivalAirport: 'TRD',
+            arrivalAirport: 'TRD',
             seat: '8F',
           }
         ]
@@ -90,14 +90,14 @@ module.exports = [
             flightNo: 'DK793',
             departDate: '26-06-2014',
             departAirport: 'TRD',
-            ArrivalAirport: 'CHQ',
+            arrivalAirport: 'CHQ',
             seat: '4D',
           },
           {
             flightNo: 'DK794',
             departDate: '03-07-2014',
             departAirport: 'CHQ',
-            ArrivalAirport: 'TRD',
+            arrivalAirport: 'TRD',
             seat: '8E',
           }
         ]
@@ -109,14 +109,14 @@ module.exports = [
             flightNo: 'DK793',
             departDate: '26-06-2014',
             departAirport: 'TRD',
-            ArrivalAirport: 'CHQ',
+            arrivalAirport: 'CHQ',
             seat: '4E',
           },
           {
             flightNo: 'DK794',
             departDate: '03-07-2014',
             departAirport: 'CHQ',
-            ArrivalAirport: 'TRD',
+            arrivalAirport: 'TRD',
             seat: '8D',
           }
         ]
@@ -135,14 +135,14 @@ module.exports = [
             flightNo: 'DK853',
             departDate: '20-06-2014',
             departAirport: 'OSL',
-            ArrivalAirport: 'PMI',
+            arrivalAirport: 'PMI',
             seat: '6J',
           },
           {
             flightNo: 'DK854',
             departDate: '27-06-2014',
             departAirport: 'PMI',
-            ArrivalAirport: 'OSL',
+            arrivalAirport: 'OSL',
             seat: '6J',
           }
         ]
@@ -154,14 +154,14 @@ module.exports = [
             flightNo: 'DK853',
             departDate: '20-06-2014',
             departAirport: 'OSL',
-            ArrivalAirport: 'PMI',
+            arrivalAirport: 'PMI',
             seat: '6K',
           },
           {
             flightNo: 'DK854',
             departDate: '27-06-2014',
             departAirport: 'PMI',
-            ArrivalAirport: 'OSL',
+            arrivalAirport: 'OSL',
             seat: '6K',
           }
         ]
@@ -180,14 +180,14 @@ module.exports = [
             flightNo: 'DK171',
             departDate: '12-06-2014',
             departAirport: 'ARN',
-            ArrivalAirport: 'HER',
+            arrivalAirport: 'HER',
             seat: '17H',
           },
           {
             flightNo: 'DK172',
             departDate: '26-06-2014',
             departAirport: 'HER',
-            ArrivalAirport: 'ARN',
+            arrivalAirport: 'ARN',
             seat: '16C',
           }
         ]
@@ -199,14 +199,14 @@ module.exports = [
             flightNo: 'DK171',
             departDate: '12-06-2014',
             departAirport: 'ARN',
-            ArrivalAirport: 'HER',
+            arrivalAirport: 'HER',
             seat: '17K',
           },
           {
             flightNo: 'DK172',
             departDate: '26-06-2014',
             departAirport: 'HER',
-            ArrivalAirport: 'ARN',
+            arrivalAirport: 'ARN',
             seat: '16A',
           }
         ]
@@ -225,14 +225,14 @@ module.exports = [
             flightNo: 'DK685',
             departDate: '13-06-2014',
             departAirport: 'BLL',
-            ArrivalAirport: 'KGS',
+            arrivalAirport: 'KGS',
             seat: '13C',
           },
           {
             flightNo: 'DK686',
             departDate: '27-06-2014',
             departAirport: 'KGS',
-            ArrivalAirport: 'BLL',
+            arrivalAirport: 'BLL',
             seat: '13C',
           }
         ]
@@ -251,14 +251,14 @@ module.exports = [
             flightNo: 'DK513',
             departDate: '19-06-2014',
             departAirport: 'AAL',
-            ArrivalAirport: 'AYT',
+            arrivalAirport: 'AYT',
             seat: '1B',
           },
           {
             flightNo: 'DK514',
             departDate: '26-06-2014',
             departAirport: 'AYT',
-            ArrivalAirport: 'AAL',
+            arrivalAirport: 'AAL',
             seat: '1A',
           }
         ]
@@ -270,14 +270,14 @@ module.exports = [
             flightNo: 'DK513',
             departDate: '19-06-2014',
             departAirport: 'AAL',
-            ArrivalAirport: 'AYT',
+            arrivalAirport: 'AYT',
             seat: '1B',
           },
           {
             flightNo: 'DK514',
             departDate: '26-06-2014',
             departAirport: 'AYT',
-            ArrivalAirport: 'AAL',
+            arrivalAirport: 'AAL',
             seat: '1A',
           }
         ]
@@ -289,14 +289,14 @@ module.exports = [
             flightNo: 'DK513',
             departDate: '19-06-2014',
             departAirport: 'AAL',
-            ArrivalAirport: 'AYT',
+            arrivalAirport: 'AYT',
             seat: '1C',
           },
           {
             flightNo: 'DK514',
             departDate: '26-06-2014',
             departAirport: 'AYT',
-            ArrivalAirport: 'AAL',
+            arrivalAirport: 'AAL',
             seat: '1C',
           }
         ]
@@ -308,14 +308,14 @@ module.exports = [
             flightNo: 'DK513',
             departDate: '19-06-2014',
             departAirport: 'AAL',
-            ArrivalAirport: 'AYT',
+            arrivalAirport: 'AYT',
             seat: '1B',
           },
           {
             flightNo: 'DK514',
             departDate: '26-06-2014',
             departAirport: 'AYT',
-            ArrivalAirport: 'AAL',
+            arrivalAirport: 'AAL',
             seat: '1A',
           }
         ]

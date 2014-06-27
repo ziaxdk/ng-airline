@@ -16,8 +16,18 @@
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <ul class="list-group">
-            <li class="list-group-item" ng-repeat="data in model|orderBy:'id'|filter:q">
-              {{data.title|uppercase}}
+            <li class="list-group-item" ng-repeat="data in model track by data.id|filter:q">
+              <p>{{data.booking}}<p>
+                <ul class="list-group">
+                  <li class="list-group-item" ng-repeat="pax in data.passengers">
+                    <p>{{pax.name}} - {{pax.seat}}</p>
+                    <ul class="list-group">
+                      <li class="list-group-item" ng-repeat="flight in pax.flights">
+                        <p>{{flight.flightNo}} {{flight.departDate}} {{flight.departAirport}}-{{flight.arrivalAirport}}</p>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
             </li>
           </ul>
         </div>
