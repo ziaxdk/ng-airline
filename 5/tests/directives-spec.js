@@ -4,7 +4,7 @@ describe("module directives", function() {
   describe("collapse", function() {
 
     var scope,
-        html = '<div collapse="foobar"><span class="test-ng-transclude"></span></div>';
+        html = '<div collapse="foobar"><div class="test-ng-transclude" style="height: 10px">Hello</div></div>';
 
     beforeEach(inject(function($injector) {
       scope = $injector.get('$rootScope');
@@ -19,17 +19,15 @@ describe("module directives", function() {
       var element = $($compile(html)(scope));
       scope.$digest();
       
-      console.log(element);
-
       expect($('li', element).length).toBe(2);
       expect($('li:nth-child(1) > i', element)).toHaveClass('glyphicon-chevron-right');
-      expect($('li:nth-child(2)', element)).toContainElement('span.test-ng-transclude');
-      expect($('li:nth-child(2)', element)).toBeHidden();
+      expect($('li:nth-child(2)', element)).toContainElement('div.test-ng-transclude');
+      expect($('li:nth-child(2)', element)).toHaveClass('ng-hide');
 
       $('li:nth-child(1)', element).click();
-      console.log(element)
+
       expect($('li:nth-child(1) > i', element)).toHaveClass('glyphicon-chevron-down');
-      expect($('li:nth-child(2)', element)).toBeVisible();
+      expect($('li:nth-child(2)', element)).not.toHaveClass('ng-hide');
     }));
 
 
