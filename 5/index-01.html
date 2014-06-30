@@ -3,12 +3,15 @@
   <head>
     <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css">
     <script type="text/javascript" src="../bower_components/angular/angular.js"></script>
-    <title>Angular Airline</title>
+    <script type="text/javascript" src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script type="text/javascript" src="directives.js"></script>
+    <title>Angular Airline - now with animations</title>
 
     <style type="text/css">
       .list-group-item.collapse {
         cursor: pointer;
       }
+
     </style>
   </head>
 
@@ -32,7 +35,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-          <div ng-repeat="data in model | filter:form.q track by data.id">
+          <div class="booking" ng-repeat="data in model | filter:form.q track by data.id">
 
             <div collapse="{{data.booking}}">
               <div ng-repeat="pax in data.passengers">
@@ -70,15 +73,8 @@
       
     </div>
 
-    <script type="text/ng-template" id="/tpl.html">
-      <ul class="list-group">
-        <li class="list-group-item collapse" ng-click="toggle()"><i class="glyphicon" ng-class="{'glyphicon-chevron-right': !visible, 'glyphicon-chevron-down': visible}"></i> {{header}}</li>
-        <li class="list-group-item" ng-show="visible" ng-transclude></li>
-      </ul>
-    </script>
-
     <script type="text/javascript">
-      angular.module('app', [])
+      angular.module('app', ['directives'])
 
       .controller('ctrl', function($scope, $http) {
         $http.get('/api/2-2').success(function(data) {
@@ -91,41 +87,8 @@
           if (!val || val == '') return 'n/a';
           return val;
         }
-      })
-
-      .directive('collapse', function() {
-        return {
-          scope: {
-            header: '@collapse'
-          },
-          // templateUrl: '/tpl.html',
-          // templateUrl: '/3/tpl.html',
-          template: 
-          '<ul class="list-group">' +
-            '<li class="list-group-item collapse" ng-click="toggle()"><i class="glyphicon" ng-class="{\'glyphicon-chevron-right\': !visible, \'glyphicon-chevron-down\': visible}"></i> {{header}}</li>' +
-            '<li class="list-group-item" ng-show="visible" ng-transclude></li>' +
-          '</ul>',
-          replace: true,
-          transclude: true,
-          link: function($scope, iElm, iAttrs, controller) {
-            $scope.toggle = function() {
-              $scope.visible = !$scope.visible;
-            }
-          }
-        };
-      })
-
-      .directive('debug', function() {
-        return {
-          scope: true,
-          template: 
-          '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">' +
-            '<hr>' +
-              '<pre>{{ form|json }}</pre>' +
-            '<hr>' +
-          '</div>'
-        };
       });
+
 
     </script>
   </body>

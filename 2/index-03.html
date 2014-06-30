@@ -43,7 +43,25 @@
 
                     <ul class="list-group">
                       <li class="list-group-item" ng-repeat="flight in pax.flights">
-                        <p>{{flight.flightNo}} ({{flight.seat}}) {{flight.departDate}} {{flight.departAirport}}-{{flight.arrivalAirport}}</p>
+
+                        <div class="panel panel-default">
+                          <div class="panel-heading">Flight: {{flight.flightNo}}</div>
+                          <div class="panel-body">
+                            <dl class="dl-horizontal">
+                              <dt>Flight no</dt>
+                              <dd>{{flight.flightNo}}</dd>
+                              <dt>Seat</dt>
+                              <dd>{{flight.seat}}</dd>
+                              <dt>Depart date</dt>
+                              <dd>{{flight.departDate}}</dd>
+                              <dt>Depart airport</dt>
+                              <dd>{{flight.departAirport}}</dd>
+                              <dt>Arrival airport</dt>
+                              <dd>{{flight.arrivalAirport}}</dd>
+                            </dl>
+                          </div>
+                        </div>
+
                       </li>
                     </ul>
 
