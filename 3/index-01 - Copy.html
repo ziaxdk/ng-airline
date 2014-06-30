@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <script type="text/javascript" src="../bower_components/angular/angular.js"></script>
+    <title>Angular Airline</title>
+
+    <style type="text/css">
+      .list-group-item.collapse {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body ng-app="app" ng-controller="ctrl">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <form class="form-inline" role="form">
+            <div class="form-group">
+              <label class="sr-only" for="exampleInputEmail2">Email address</label>
+              <input type="text" class="form-control" id="search" ng-model="form.q" placeholder="Search...">
+            </div>
+            <button type="submit" class="btn btn-default">Search</button>
+          </form>
+        </div>
+      </div>
+
+
+<!--       <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <pre>{{form|json}}</pre>
+        </div>
+      </div>
+ -->
+
+      <hr>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+
+          <div collapse="bookings">
+            <div ng-repeat="data in model track by data.id">
+
+              <div collapse="{{data.booking}}">
+                <div ng-repeat="pax in data.passengers">
+
+                  <div collapse="{{pax.name}}">
+                    <div ng-repeat="flight in pax.flights">
+                      <p>{{flight.flightNo}} ({{flight.seat | seat}}) {{flight.departDate | date:'medium'}} {{flight.departAirport}}-{{flight.arrivalAirport}}</p>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- <p ng-click="showBookings =! showBookings">Bookings</p>
+          <ul class="list-group" ng-show="showBookings">
+            <li class="list-group-item" ng-repeat="data in model track by data.id|filter:form.q">
+              
+              <p ng-click="showBooking =! showBooking">{{data.booking}}<p>
+              <ul class="list-group" ng-show="showBooking">
+                <li class="list-group-item" ng-repeat="pax in data.passengers">
+
+                  <p ng-click="showPax =! showPax">{{pax.name}}</p>
+                  <ul class="list-group" ng-show="showPax">
+                    <li class="list-group-item" ng-repeat="flight in pax.flights">
+                      <p>{{flight.flightNo}} - {{flight.seat}} {{flight.departDate}} {{flight.departAirport}}-{{flight.arrivalAirport}}</p>
+                    </li>
+                  </ul>
+
+                </li>
+              </ul>
+
+            </li>
+          </ul> -->
+        </div>
+      </div>
+      
+    </div>
+
+    <script type="text/javascript">
+      angular.module('app', [])
+
+      .controller('ctrl', function($scope, $http) {
+        $http.get('/api/2-2').success(function(data) {
+          $scope.model = data;
+        });
+
+      })
+      .filter('seat', function() {
+        return function(val) {
+          if (!val || val == '') return 'n/a';
+          return val;
+        }
+      })
+
+      .directive('collapse', function() {
+        return {
+          scope: {
+            header: '@collapse'
+          },
+          template: 
+          '<ul class="list-group">' +
+            '<li class="list-group-item collapse" ng-click="toggle()">{{header}}</li>' +
+            '<li class="list-group-item" ng-show="visible" ng-transclude></li>' +
+          '</ul>',
+          transclude: true,
+          link: function($scope, iElm, iAttrs, controller) {
+            $scope.toggle = function() {
+              $scope.visible = !$scope.visible;
+            }
+          }
+        };
+      })
+
+    </script>
+  </body>
+</html>

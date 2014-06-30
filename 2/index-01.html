@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <script type="text/javascript" src="../bower_components/angular/angular.js"></script>
+    <title>Angular Airline</title>
+  </head>
+
+  <body ng-app="app" ng-controller="ctrl">
+    <div class="container">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+        <h1>Filters</h1>
+        
+        <ul class="list-group">
+          <li class="list-group-item" ng-repeat="data in model">
+            {{data.title}} - {{data.date}}
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+
+    <script type="text/javascript">
+      angular.module('app', [])
+
+      .controller('ctrl', function($scope) {
+
+        $scope.model = [
+          {id: 1, title: 'title1', date: '2014-02-02T00:00:00.000Z'},
+          {id: 2, title: 'title2', date: '2014-03-12T00:00:00.000Z'},
+          {id: 3, title: 'title3', date: '2014-10-25T00:00:00.000Z'},
+          {id: 4, title: 'title4', date: '2014-01-01T00:00:00.000Z'},
+          {id: 5, title: 'title5', date: '2014-08-11T00:00:00.000Z'}
+        ]
+      });
+
+    </script>
+  </body>
+  <!-- TODO: Add date filter -->
+</html>

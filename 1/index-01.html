@@ -3,17 +3,20 @@
   <head>
     <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css">
     <script type="text/javascript" src="../bower_components/angular/angular.js"></script>
+    <title>Angular Airline</title>
   </head>
 
   <body ng-app="app" ng-controller="ctrl">
-    <h1>Hello {{text}}</h1>
 
+    <div class="container">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-    <!-- <ul class="list-group">
-      <li class="list-group-item" ng-repeat="data in model">
-        {{data.title}}
-      </li>
-    </ul> -->
+        <h1>Concepts</h1>
+        <h2>Hello {{text}}</h2>
+        
+      </div>
+    </div>
+
 
     <script type="text/javascript">
       angular.module('app', [])
@@ -21,13 +24,6 @@
       .controller('ctrl', function($scope) {
         $scope.text = 'world';
 
-        // $scope.model = [
-        //   {id: 1, title: 'title1'},
-        //   {id: 2, title: 'title2'},
-        //   {id: 3, title: 'title3'},
-        //   {id: 4, title: 'title4'},
-        //   {id: 5, title: 'title5'}
-        // ]
       });
     </script>
   </body>
