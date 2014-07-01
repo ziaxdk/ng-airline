@@ -1,8 +1,10 @@
 describe("A suite", function() {
-  beforeEach(module('directives'));
 
-  it("contains spec with an expectation", function() {
-    expect(beforeEach).not.toBeNull();
+  it("should be absolutely true", function() {
+    expect(true).toBe(true);
+  });
+
+  it("should do it once again", function() {
     expect(true).toBe(true);
   });
 });
