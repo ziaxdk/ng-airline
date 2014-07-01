@@ -35,13 +35,13 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <ul class="list-group">
             <li class="list-group-item" ng-repeat="data in model | filter: form.q track by data.id ">
-              <p ng-click="showBooking = !showBooking">{{data.booking}}<p>
+              <p>{{data.booking}}<p>
 
-                <ul class="list-group" ng-show="showBooking">
+                <ul class="list-group">
                   <li class="list-group-item" ng-repeat="pax in data.passengers">
-                    <p ng-click="showPax = !showPax">{{pax.name}}</p>
+                    <p>{{pax.name}}</p>
 
-                    <ul class="list-group" ng-show="showPax">
+                    <ul class="list-group">
                       <li class="list-group-item" ng-repeat="flight in pax.flights">
 
                         <div class="panel panel-default">
@@ -51,9 +51,9 @@
                               <dt>Flight no</dt>
                               <dd>{{flight.flightNo}}</dd>
                               <dt>Seat</dt>
-                              <dd>{{flight.seat | seat}}</dd>
+                              <dd>{{flight.seat}}</dd>
                               <dt>Depart date</dt>
-                              <dd>{{flight.departDate | date:'medium'}}</dd>
+                              <dd>{{flight.departDate}}</dd>
                               <dt>Depart airport</dt>
                               <dd>{{flight.departAirport}}</dd>
                               <dt>Arrival airport</dt>
@@ -79,21 +79,23 @@
     <script type="text/javascript">
       angular.module('app', [])
 
-      .controller('ctrl', function($scope, $http) {
-        $http.get('/api/2-2').success(function(data) {
+      .controller('ctrl', function($scope, Rest) {
+        Rest.getBookings().success(function(data) {
           $scope.model = data;
         })
-
+        .error(function(err) {
+          alert(err);
+        });
       })
 
-      .filter('seat', function() {
-        return function(val) {
-          if (!val || val == '') return 'n/a';
-          return val;
+      .service('Rest', function($http) {
+        this.getBookings = function (argument) {
+          return $http.get('/api/2-2');
         }
+
       });
+
     </script>
   </body>
-  <!-- Custom filter -->
-  <!-- Click handler on header -->
+  <!-- TODO: Explain filter/model bind to form.q -->
 </html>

@@ -8,17 +8,40 @@
 
   <body ng-app="app" ng-controller="ctrl">
     <div class="container">
-      
+
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
+          <form class="form-inline" role="form">
+            <div class="form-group">
+              <label class="sr-only" for="exampleInputEmail2">Email address</label>
+              <input type="text" class="form-control" id="search" ng-model="form.q" placeholder="Search...">
+            </div>
+            <button type="submit" class="btn btn-default">Search</button>
+          </form>
+
+        </div>
+      </div>
+
+<!--       <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <pre>{{form|json}}</pre>
+        </div>
+      </div>
+ -->
+      
+      <hr>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <ul class="list-group">
-            <li class="list-group-item" ng-repeat="data in model track by data.id">
-              <p>{{data.booking}}<p>
-                <ul class="list-group">
+            <li class="list-group-item" ng-repeat="data in model | filter: form.q track by data.id ">
+              <p ng-click="showBooking = !showBooking">{{data.booking}}<p>
+
+                <ul class="list-group" ng-show="showBooking">
                   <li class="list-group-item" ng-repeat="pax in data.passengers">
-                    <p>{{pax.name}} - {{pax.seat}}</p>
-                    <ul class="list-group">
+                    <p ng-click="showPax = !showPax">{{pax.name}}</p>
+
+                    <ul class="list-group" ng-show="showPax">
                       <li class="list-group-item" ng-repeat="flight in pax.flights">
 
                         <div class="panel panel-default">
@@ -28,9 +51,9 @@
                               <dt>Flight no</dt>
                               <dd>{{flight.flightNo}}</dd>
                               <dt>Seat</dt>
-                              <dd>{{flight.seat}}</dd>
+                              <dd>{{flight.seat | seat}}</dd>
                               <dt>Depart date</dt>
-                              <dd>{{flight.departDate}}</dd>
+                              <dd>{{flight.departDate | date:'medium'}}</dd>
                               <dt>Depart airport</dt>
                               <dd>{{flight.departAirport}}</dd>
                               <dt>Arrival airport</dt>
@@ -41,15 +64,17 @@
 
                       </li>
                     </ul>
+
                   </li>
                 </ul>
+
             </li>
           </ul>
-
         </div>
       </div>
-     
+      
     </div>
+
 
     <script type="text/javascript">
       angular.module('app', [])
@@ -68,8 +93,16 @@
           return $http.get('/api/2-2');
         }
 
+      })
+
+      .filter('seat', function() {
+        return function(val) {
+          if (!val || val == '') return 'n/a';
+          return val;
+        }
       });
     </script>
   </body>
-  <!-- TODO: Explain DI (Rest service) -->
+  <!-- Custom filter -->
+  <!-- Click handler on header -->
 </html>
