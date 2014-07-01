@@ -15,11 +15,11 @@ describe("module directives", function() {
     });
 
 
-    it('should have classes', inject(function ($compile) {
+    it('should expand when clicked', inject(function ($compile) {
       var element = $($compile(html)(scope));
       scope.$digest();
       
-      expect($('li', element).length).toBe(2);
+      expect($('li', element)).toHaveLength(2);
       expect($('li:nth-child(1) > i', element)).toHaveClass('glyphicon-chevron-right');
       expect($('li:nth-child(2)', element)).toContainElement('div.test-ng-transclude');
       expect($('li:nth-child(2)', element)).toHaveClass('ng-hide');

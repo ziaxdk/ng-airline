@@ -5,6 +5,8 @@
     <script type="text/javascript" src="../bower_components/angular/angular.js"></script>
     <script type="text/javascript" src="../bower_components/angular-animate/angular-animate.js"></script>
     <script type="text/javascript" src="directives.js"></script>
+    <script type="text/javascript" src="filters.js"></script>
+    <script type="text/javascript" src="services.js"></script>
     <title>Angular Airline - now with animations</title>
 
     <style type="text/css">
@@ -74,19 +76,16 @@
     </div>
 
     <script type="text/javascript">
-      angular.module('app', ['directives'])
+      angular.module('app', ['directives', 'filters', 'services'])
 
-      .controller('ctrl', function($scope, $http) {
-        $http.get('/api/2-2').success(function(data) {
+      .controller('ctrl', function($scope, Rest) {
+        Rest.getBookings().success(function(data) {
           $scope.model = data;
+        })
+        .error(function(err) {
+          alert(err);
         });
 
-      })
-      .filter('seat', function() {
-        return function(val) {
-          if (!val || val == '') return 'n/a';
-          return val;
-        }
       });
 
 

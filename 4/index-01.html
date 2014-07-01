@@ -120,10 +120,18 @@
     <script type="text/javascript">
       angular.module('app', ['ngAnimate'])
 
-      .controller('ctrl', function($scope, $http) {
-        $http.get('/api/2-2').success(function(data) {
+      .controller('ctrl', function($scope, Rest) {
+        Rest.getBookings().success(function(data) {
           $scope.model = data;
+        })
+        .error(function(err) {
+          alert(err);
         });
+      })
+      .service('Rest', function($http) {
+        this.getBookings = function (argument) {
+          return $http.get('/api/2-2');
+        }
 
       })
       .filter('seat', function() {

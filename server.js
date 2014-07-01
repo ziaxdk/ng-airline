@@ -15,5 +15,5 @@ app.get('/api/2-2', function(req, res) {
 });
 
 app.use(express.static(__dirname));
-app.listen(3000, function() { console.log('ready 3000'); });
+app.listen(3000, function() { console.log('ready on port 3000'); });
 
