@@ -1,6 +1,7 @@
 var express = require('express'),
     bookings = require('./bookings'),
-    app = express();
+    app = express(),
+    port = process.env.PORT || 3000;
 
 app.get('/api/2', function(req, res) {
   var data = [];
@@ -14,6 +15,10 @@ app.get('/api/2-2', function(req, res) {
   res.send(bookings);
 });
 
+app.get('/api/test', function(req, res) {
+  res.send(new Date());
+});
+
 app.use(express.static(__dirname));
-app.listen(3000, function() { console.log('ready on port 3000'); });
+app.listen(port, function() { console.log('ready on port ', port); });
 
