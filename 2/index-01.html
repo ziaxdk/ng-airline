@@ -14,7 +14,7 @@
         
         <ul class="list-group">
           <li class="list-group-item" ng-repeat="data in model">
-            {{data.title}} - {{data.date}}
+            {{data.title}} - {{data.date|date:'shortDate'}}
           </li>
         </ul>
 

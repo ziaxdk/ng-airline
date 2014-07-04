@@ -54,16 +54,16 @@
     <script type="text/javascript">
       angular.module('app', [])
 
-      .controller('ctrl', function($scope, $http) {
-        $http.get('/api/2-2')
-          .success(function(data) {
-            $scope.model = data;
-          })
-          .error(function(err) {
-            alert(err);
-          });
-
-      });
+      .controller('ctrl', ['$scope', '$http', function($scope, $http) {
+              $http.get('/api/2-2')
+                .success(function(data) {
+                  $scope.model = data;
+                })
+                .error(function(err) {
+                  alert(err);
+                });
+      
+            }]);
     </script>
   </body>
   <!-- TODO: Explain DI + minification & ajax -->

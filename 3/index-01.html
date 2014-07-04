@@ -98,13 +98,13 @@
             header: '@collapse'
           },
           // templateUrl: '/tpl.html',
-          // templateUrl: '/3/tpl.html',
-          template: 
-          '<ul class="list-group">' +
-            '<li class="list-group-item collapse" ng-click="toggle()"><i class="glyphicon" ng-class="{\'glyphicon-chevron-right\': !visible, \'glyphicon-chevron-down\': visible}"></i> {{header}}</li>' +
-            '<li class="list-group-item" ng-show="visible" ng-transclude></li>' +
-          '</ul>',
-          replace: true,
+          templateUrl: '/3/tpl.html',
+          // template: 
+          // '<ul class="list-group">' +
+          //   '<li class="list-group-item collapse" ng-click="toggle()"><i class="glyphicon" ng-class="{\'glyphicon-chevron-right\': !visible, \'glyphicon-chevron-down\': visible}"></i> {{header}}</li>' +
+          //   '<li class="list-group-item" ng-show="visible" ng-transclude></li>' +
+          // '</ul>',
+          // replace: true,
           transclude: true,
           link: function($scope, iElm, iAttrs, controller) {
             $scope.toggle = function() {
