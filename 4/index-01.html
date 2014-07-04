@@ -4,6 +4,9 @@
     <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css">
     <script type="text/javascript" src="../bower_components/angular/angular.js"></script>
     <script type="text/javascript" src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script type="text/javascript" src="services.js"></script>
+    <script type="text/javascript" src="filters.js"></script>
+    <script type="text/javascript" src="directives.js"></script>
     <title>Angular Airline - now with animations</title>
 
     <style type="text/css">
@@ -118,9 +121,10 @@
     </div>
 
     <script type="text/javascript">
-      angular.module('app', ['ngAnimate'])
+      angular.module('app', ['ngAnimate', 'services', 'filters', 'directives'])
 
       .controller('ctrl', function($scope, Rest) {
+        // $scope.form = { q: 'erik' };
         Rest.getBookings().success(function(data) {
           $scope.model = data;
         })
@@ -128,50 +132,6 @@
           alert(err);
         });
       })
-      .service('Rest', function($http) {
-        this.getBookings = function (argument) {
-          return $http.get('/api/2-2');
-        }
-
-      })
-      .filter('seat', function() {
-        return function(val) {
-          if (!val || val == '') return 'n/a';
-          return val;
-        }
-      })
-
-      .directive('collapse', function() {
-        return {
-          scope: {
-            header: '@collapse'
-          },
-          template: 
-          '<ul class="list-group">' +
-            '<li class="list-group-item collapse" ng-click="toggle()"><i class="glyphicon" ng-class="{\'glyphicon-chevron-right\': !visible, \'glyphicon-chevron-down\': visible}"></i> {{header}}</li>' +
-            '<li class="list-group-item" ng-show="visible" ng-transclude></li>' +
-          '</ul>',
-          replace: true,
-          transclude: true,
-          link: function($scope, iElm, iAttrs, controller) {
-            $scope.toggle = function() {
-              $scope.visible = !$scope.visible;
-            }
-          }
-        };
-      })
-
-      .directive('debug', function() {
-        return {
-          scope: true,
-          template: 
-          '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">' +
-            '<hr>' +
-              '<pre>{{ form|json }}</pre>' +
-            '<hr>' +
-          '</div>'
-        };
-      });
 
     </script>
   </body>

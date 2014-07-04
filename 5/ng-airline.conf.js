@@ -6,7 +6,7 @@ module.exports = function(config) {
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
-
+    // urlRoot: '.',
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -22,7 +22,16 @@ module.exports = function(config) {
         'directives.js',
         'services.js',
         'filters.js',
-        'tests/**/*spec.js'
+        '__tests/**/*spec.js'
+
+        // 'bower_components/jquery/dist/jquery.js',
+        // 'bower_components/angular/angular.js',
+        // 'bower_components/angular-mocks/angular-mocks.js',
+        // 'bower_components/jasmine-jquery/lib/jasmine-jquery.js',
+        // '5/directives.js',
+        // '5/services.js',
+        // '5/filters.js',
+        // '5/tests/**/*spec.js'
     ],
 
 
@@ -64,7 +73,8 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome', 'Firefox', 'IE'],
+    browsers: [],
+    // browsers: ['Chrome', 'Firefox', 'IE'],
     // browsers: ['sl_ios_safari'],
     // browsers: ['bs_ie8_win7'],
 
@@ -145,6 +155,7 @@ module.exports = function(config) {
             version: '11'
         }
     }
+
 
   });
 };

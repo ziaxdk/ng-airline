@@ -3,6 +3,8 @@
   <head>
     <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css">
     <script type="text/javascript" src="../bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="services.js"></script>
+    <script type="text/javascript" src="filters.js"></script>
     <title>Angular Airline</title>
 
     <style type="text/css">
@@ -78,27 +80,16 @@
     </script>
 
     <script type="text/javascript">
-      angular.module('app', [])
+      angular.module('app', ['services', 'filters'])
 
       .controller('ctrl', function($scope, Rest) {
+        $scope.form = { q: 'erik' };
         Rest.getBookings().success(function(data) {
           $scope.model = data;
         })
         .error(function(err) {
           alert(err);
         });
-      })
-      .service('Rest', function($http) {
-        this.getBookings = function (argument) {
-          return $http.get('/api/2-2');
-        }
-
-      })
-      .filter('seat', function() {
-        return function(val) {
-          if (!val || val == '') return 'n/a';
-          return val;
-        }
       })
 
       .directive('collapse', function() {
